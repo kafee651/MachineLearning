@@ -23,7 +23,7 @@ class NaiveBayesClassifier(object):
         probability: prob that an item is in a category
         """
         category_prob = self.get_category_count(category) / sum(self.category_count.values())
-        print category_prob
+        """print category_prob"""
         return self.document_probability(item, category) * category_prob
     
     def document_probability(self, item, category):
@@ -92,12 +92,12 @@ class NaiveBayesClassifier(object):
         
     def weighted_prob(self, f, category, weight=1.0, ap=0.5):
         basic_prob = self.feature_prob(f, category)
-        print f
-        print basic_prob
+        """print f
+        print basic_prob"""
         totals = sum([self.get_feature_count(f, category) for category in self.category_count.keys()])
-        print totals
+        """print totals"""
         w_prob = ((weight*ap) + (totals * basic_prob)) / (weight + totals)
-        print w_prob
+        """print w_prob"""
         return w_prob
             
     def train(self, item, category):
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     for label in labels:
         f = open(label, 'r')
         data[label] = f.readlines()
-        print len(data[label])
+        """print len(data[label])"""
         f.close()
     nb = NaiveBayesClassifier()
     nb.train_from_data(data)
